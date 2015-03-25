@@ -43,4 +43,8 @@ h1{
 
 a{
 	text-decoration: none;
+	background: black;
+	color: white;
+	padding: 20px;
+  	display: inline-block;
 }
