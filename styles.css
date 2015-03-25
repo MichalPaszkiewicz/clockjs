@@ -5,10 +5,18 @@ html, body{
 	width: 100%;
 }
 
+.main-container{
+	min-height: 100%;
+}
+
 .header, .footer, .push{
 	height: 100px;
 }
 
 .footer{
 	margin-top: -100px;
+}
+
+.panel-box{
+	
 }
