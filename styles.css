@@ -48,3 +48,7 @@ a{
 	padding: 20px;
   	display: inline-block;
 }
+
+code{
+	text-align: left;
+}
