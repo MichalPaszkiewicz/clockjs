@@ -1,0 +1,37 @@
+<html>
+	<head>
+		<title>Australian clocks</title>
+		<meta name="description" content="What if clocks were Australian? Why do clocks go clockwise?">
+		<meta name="viewport" content="width=device-width, initial-scale=1.0">
+		<link rel="stylesheet" type="text/css" href="styles.css">
+		
+		<script>
+			(function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+			(i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+			m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+			})(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+			ga('create', 'UA-52254492-1', 'michalpaszkiewicz.co.uk');
+			ga('send', 'pageview');
+		</script>
+	</head>
+	<body>
+	<div class="main-container">
+		<div id="panel1" class="panel">
+			<div class="panel-box">
+				<h1>Michal Paszkiewicz</h1>
+				<h2>Blog</h2>
+			</div>
+		</div>
+	
+		<div id="panel2" class="panel">
+			<div class="panel-box">
+				<div style="position: fixed; width: 100%; height: 100%; top: 0; left: 0;">
+					<canvas id="my-canvas"></canvas>
+					<script src="http://www.michalpaszkiewicz.co.uk/clockjs/clock.js"></script>
+					<script>
+						var myClock = new clock("my-canvas", {rimColour:"rgba(0,0,0,0.1)"});
+						myClock.start();
+					</script>	
+				</div>
+	</body>
+</html>
