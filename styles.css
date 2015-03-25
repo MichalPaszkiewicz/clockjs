@@ -4,3 +4,11 @@ html, body{
 	height: 100%;
 	width: 100%;
 }
+
+.header, .footer, .push{
+	height: 100px;
+}
+
+.footer{
+	margin-top: -100px;
+}
