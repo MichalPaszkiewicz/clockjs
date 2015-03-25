@@ -3,6 +3,9 @@ html, body{
 	margin: 0;
 	height: 100%;
 	width: 100%;
+	font-family: "arial";
+	letter-spacing: 1px;
+	word-spacing: 3px;
 }
 
 .main-container{
