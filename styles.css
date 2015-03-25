@@ -26,7 +26,7 @@ html, body{
 	text-align: center;
 }
 
-.panel{
+.panel,.header,.footer{
 	position: relative;
 	z-index: 10;
 }
