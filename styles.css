@@ -13,7 +13,7 @@ html, body{
 }
 
 .header, .footer, .push{
-	height: 100px;
+	height: 70px;
 }
 
 .header, .footer, .footer a{
@@ -22,7 +22,7 @@ html, body{
 }
 
 .footer{
-	margin-top: -100px;
+	margin-top: -70px;
 }
 
 .panel-box{
