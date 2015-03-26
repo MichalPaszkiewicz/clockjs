@@ -17,6 +17,10 @@ html, body{
 	text-align: center;
 }
 
+h2{
+	text-align: center;
+}
+
 p{
 	text-align: justify;
 }
@@ -42,6 +46,10 @@ p{
 
 .panel,.header,.footer{
 
+}
+
+.panel{
+	padding: 10px;
 }
 
 h1{
