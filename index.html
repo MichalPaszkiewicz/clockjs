@@ -115,11 +115,26 @@ myClock.start();
 					</p>
 					
 
-					<div class="small-clock"><canvas id="black-clock"></canvas></div>
-					<script>
-						var blackClock = new clock("black-clock", {colour: "black", rimColour:"black", rim: 1, centreCircleRadius:30, centreCircleCutout: 25});
-						blackClock.start();
-					</script>
+<p>Here is how to add a smaller, backwards clock in a div:</p>
+<pre><code class="html">
+&lt;div class="small-clock"&gt;&lt;canvas id="backwards-clock"&gt;&lt;/canvas&gt;&lt;/div&gt;
+&lt;script&gt;
+	var blackClock = new clock("backwards-clock", {colour: "black", rimColour:"black", rim: 1,directionCoefficient: -1});
+	blackClock.start();
+&lt;/script&gt;
+&lt;style&gt;
+.small-clock{
+	height: 100%;
+	width: 100%;
+	max-height: 300px;
+	max-width: 300px;
+	display:inline-block;
+}
+&lt;/style&gt;
+</code></pre>
+	<p>
+		And here is the result:
+	</p>
 					<div class="small-clock"><canvas id="backwards-clock"></canvas></div>
 					<script>
 						var blackClock = new clock("backwards-clock", {colour: "black", rimColour:"black", rim: 1,directionCoefficient: -1});
