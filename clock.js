@@ -24,7 +24,7 @@ var clock = function(id, options){
 	self.options = {
 		radius: function(){ return Math.min(self.canvas.height, self.canvas.width) / 2 },
 		rim: function(){ return getValue("radius") * 0.2; },
-		rimColour: "black",
+		rimColour: "rgba(0,0,0,0.1)",
 		x: function(){ return self.canvas.width / 2 },
 		y: function(){ return self.canvas.height / 2 },
 		colour:"rgba(255,0,0,0.2)",
