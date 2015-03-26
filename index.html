@@ -113,7 +113,12 @@ myClock.start();
 					<p>
 						By default the clock will fit to the parent container, so to set the size, just set the size of the element that contains the canvas.
 					</p>
-						
+					
+					<div style="height: 100px; width: 100px"><canvas id="black-clock"></canvas></div>
+					<script>
+						var blackClock = new clock("bkack-canvas", {colour: "black", rimColour:"red"});
+						blackClock.start();
+					</script>
 				</div>
 			</div>
 		  
