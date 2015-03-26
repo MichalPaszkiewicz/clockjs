@@ -14,6 +14,7 @@ html, body{
 
 .header, .footer, .push{
 	height: 70px;
+	text-align: center;
 }
 
 .header, .footer, .footer a{
@@ -28,7 +29,6 @@ html, body{
 .panel-box{
 	max-width: 1000px;
 	margin: auto;
-	text-align: center;
 }
 
 .panel,.header,.footer{
