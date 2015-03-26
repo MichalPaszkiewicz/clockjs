@@ -114,9 +114,19 @@ myClock.start();
 						By default the clock will fit to the parent container, so to set the size, just set the size of the element that contains the canvas.
 					</p>
 					
-					<div style="height: 100px; width: 100px"><canvas id="black-clock"></canvas></div>
+					<div class="small-clock"><canvas id="black-clock"></canvas></div>
 					<script>
-						var blackClock = new clock("black-clock", {colour: "black", rimColour:"red"});
+						var blackClock = new clock("black-clock", {colour: "black", rimColour:"black", rim: 1});
+						blackClock.start();
+					</script>
+					<div class="small-clock"><canvas id="orange-clock"></canvas></div>
+					<script>
+						var blackClock = new clock("orange-clock", {colour: "orange", rimColour:"orange", rim: 50});
+						blackClock.start();
+					</script>
+					<div class="small-clock"><canvas id="backwards-clock"></canvas></div>
+					<script>
+						var blackClock = new clock("backwards-clock", {colour: "black", rimColour:"black", rim: 1});
 						blackClock.start();
 					</script>
 				</div>
