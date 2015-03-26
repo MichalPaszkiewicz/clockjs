@@ -64,3 +64,9 @@ code{
 pre{
 	background: none;
 }
+
+@media (max-width: 550px) {
+	#fork-me{
+		display:none;
+	}
+}
