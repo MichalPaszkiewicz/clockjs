@@ -73,6 +73,7 @@ a{
 
 code{
 	text-align: left;
+	background: none !important;
 }
 
 pre{
