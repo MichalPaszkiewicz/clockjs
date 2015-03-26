@@ -119,7 +119,13 @@ myClock.start();
 <pre><code class="html">
 &lt;div class="small-clock"&gt;&lt;canvas id="backwards-clock"&gt;&lt;/canvas&gt;&lt;/div&gt;
 &lt;script&gt;
-	var blackClock = new clock("backwards-clock", {colour: "black", rimColour:"black", rim: 1,directionCoefficient: -1});
+	var options = {
+		colour: "black",
+		rimColour:"black",
+		rim: 1,
+		
+	}
+	var blackClock = new clock("backwards-clock", {  });
 	blackClock.start();
 &lt;/script&gt;
 &lt;style&gt;
