@@ -84,3 +84,12 @@ pre{
 		display:none;
 	}
 }
+
+.small-clock{
+	height: 100%;
+	width: 100%;
+	max-height: 250px;
+	max-width: 250px;
+	display:inline-block;
+	
+}
