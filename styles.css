@@ -20,6 +20,9 @@ html, body{
 .header, .footer, .footer a{
 	background: black;
   	color: white;
+  	transition: text-shadow 0.5s ease;
+  	-moz-transition: text-shadow 0.5s ease;
+  	-webkit-transition: text-shadow 0.5s ease;
 }
 
 .footer{
