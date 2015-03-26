@@ -17,6 +17,10 @@ html, body{
 	text-align: center;
 }
 
+p{
+	text-align: justify;
+}
+
 .header, .footer, .footer a{
 	background: black;
   	color: white;
