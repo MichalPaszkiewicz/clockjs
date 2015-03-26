@@ -49,6 +49,10 @@ a{
   	display: inline-block;
 }
 
+.footer a:hover{
+	text-shadow: 0 0 40px blue;
+}
+
 code{
 	text-align: left;
 }
