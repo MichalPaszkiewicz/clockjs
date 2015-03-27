@@ -28,7 +28,7 @@
 				<canvas id="my-canvas"></canvas>
 				<script src="./clock.js"></script>
 				<script>
-					var myClock = new clock("my-canvas",{colour:"rgba(255,0,0,0.1)"});
+					var myClock = new clock("my-canvas",{colour:"rgba(255,0,0,0.1)",rimColour: "rgba(0,0,0,0.1)"});
 				</script>	
 			</div>
 		
@@ -58,6 +58,7 @@ var options = {
 	radius: function(){ return Math.min(self.canvas.height, self.canvas.width) / 2 },
 					
 	//The width of the frame/rim
+	//To stop displaying rim, set this value to "none"
 	rim: function(){ return getValue("radius") * 0.2; },
 							
 	//The colour of the frame/rim
@@ -103,7 +104,26 @@ var options = {
 	addSeconds: 0,
 							
 	//set to -1 to make the clock go anti-clockwise
-	directionCoefficient: 1
+	directionCoefficient: 1,
+	
+	//set type of marker for the hour points.
+	//"none" displays none
+	//"dot" displays dots
+	//"number" displays standard numbers
+	//"numeral" displays roman numerals
+	markerType: "none",
+	
+	// set colour of hour point markers
+	markerColour: function(){ return self.options.colour; },
+	
+	// set size of hour point markers
+	markerSize: function(){ return getValue("radius") * 0.02; },
+	
+	// set distance from centre of clock to markers
+	markerDistance: function(){ return getValue("radius") * 0.9; },
+	
+	//set to false to stop displaying markers.
+	markerDisplay: true,
 }	
 						
 var myClock = new clock("my-canvas", options);
@@ -122,7 +142,8 @@ myClock.start();
 		colour: "black",
 		rimColour:"black",
 		rim: 1,
-		directionCoefficient: -1
+		directionCoefficient: -1,
+		markerType: "numeral"
 	}
 	var blackClock = new clock("backwards-clock", options);
 	blackClock.start();
@@ -142,7 +163,7 @@ myClock.start();
 	</p>
 					<div class="small-clock"><canvas id="backwards-clock"></canvas></div>
 					<script>
-						var blackClock = new clock("backwards-clock", {colour: "black", rimColour:"black", rim: 1,directionCoefficient: -1});
+						var blackClock = new clock("backwards-clock", {colour: "black", rimColour:"black", rim: 1,directionCoefficient: -1, markerType: "numeral"});
 					</script>
 					
 					<h2>Changing the clock hands</h2>
@@ -155,7 +176,7 @@ myClock.hands.secondHand.length = 0.7
 </code></pre>					
 					<h2>Handle multiple clocks</h2>
 					<p>
-						For creating multiple clocks, clock.js has a <i>clockMaker</i> object, which can be used to handle multiple clocks. It can be used like this:
+						Clock.js has a <i>clockMaker</i> object, which can be used to handle multiple clocks. It can be used like this:
 					</p>
 					
 <pre><code class="javascript">

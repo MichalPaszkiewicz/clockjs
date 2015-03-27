@@ -70,6 +70,25 @@ var options = {
 							
 	//set to -1 to make the clock go anti-clockwise
 	directionCoefficient: 1
+		
+	//set type of marker for the hour points.
+	//"none" displays none
+	//"dot" displays dots
+	//"number" displays standard numbers
+	//"numeral" displays roman numerals
+	markerType: "none",
+	
+	// set colour of hour point markers
+	markerColour: function(){ return self.options.colour; },
+	
+	// set size of hour point markers
+	markerSize: function(){ return getValue("radius") * 0.02; },
+	
+	// set distance from centre of clock to markers
+	markerDistance: function(){ return getValue("radius") * 0.9; },
+	
+	//set to false to stop displaying markers.
+	markerDisplay: true,
 }	
 						
 var myClock = new clock("my-canvas", options);

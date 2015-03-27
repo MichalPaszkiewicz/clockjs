@@ -13,6 +13,8 @@ Date.prototype.addSeconds = function(s){
 	return this;
 }
 
+var romanNumerals = [0,"I","II","III","IV","V","VI","VII","VIII","IX","X","XI","XII"];
+
 var clock = function(id, options){
 	var self = this;
 	
@@ -27,11 +29,11 @@ var clock = function(id, options){
 	//default options
 	self.options = {
 		radius: function(){ return Math.min(self.canvas.height, self.canvas.width) / 2 },
+		colour:"rgba(255,0,0,0.2)",
 		rim: function(){ return getValue("radius") * 0.2; },
-		rimColour: "rgba(0,0,0,0.1)",
+		rimColour: function(){ return self.options.colour; },
 		x: function(){ return self.canvas.width / 2 },
 		y: function(){ return self.canvas.height / 2 },
-		colour:"rgba(255,0,0,0.2)",
 		lineColour: function(){ return self.options.colour; },
 		fillColour: function(){  return self.options.colour; },
 		lineWidth: 1,
@@ -42,7 +44,12 @@ var clock = function(id, options){
 		addHours: 0,
 		addMinutes: 0,
 		addSeconds: 0,
-		directionCoefficient: 1
+		directionCoefficient: 1,
+		markerType: "number",
+		markerColour: function(){ return self.options.colour; },
+		markerSize: function(){ return getValue("radius") * 0.02; },
+		markerDistance: function(){ return getValue("radius") * 0.9; },
+		markerDisplay: true,
 	};
 	
 	//hands settings
@@ -102,7 +109,6 @@ var clock = function(id, options){
 	
 	//for drawing a handleEvent
 	var drawHand = function(x, y, radius, theta, lineWidth){
-		
 		self.context.lineWidth = 1;
 		self.context.beginPath();
 		self.context.moveTo(x,y);
@@ -117,6 +123,55 @@ var clock = function(id, options){
 		self.context.stroke();
 		self.context.fill();
 		self.context.lineWidth = 1;	
+	}
+	
+	//draw single marker on the clock
+	var drawMarker = function(x, y, i){
+		self.context.beginPath();
+		self.context.fillStyle = getValue("markerColour", "colour");
+		var markerSize = getValue("markerSize");
+		
+		switch(getValue("markerType")){
+			case "numeral":
+				markerSize *= 4;
+				self.context.font = markerSize + "px sans-serif";
+				self.context.textAlign = "center";
+				self.context.fillStyle = getValue("markerColour");
+				self.context.textBaseline = "middle";
+				self.context.fillText(romanNumerals[i + 1],x,y);
+				break;
+			case "number":
+				markerSize *= 4;
+				self.context.font = markerSize + "px sans-serif";
+				self.context.textAlign = "center";
+				self.context.fillStyle = getValue("markerColour");
+				self.context.textBaseline = "middle";
+				self.context.fillText(i + 1,x,y);
+				break;
+			case "dot":
+				self.context.arc(x,y,markerSize,0,2*Math.PI);
+				self.context.fill();
+				break;
+			case "none":
+			default:
+				return;
+		}		
+	}
+	
+	//for drawing the markers on the clock
+	var drawMarkers = function(x, y){
+		if(getValue("markerDisplay") == false){
+			return;
+		}
+		var directionCoefficient = getValue("directionCoefficient");
+		var markerDistance = getValue("markerDistance");
+		var theta = directionCoefficient * 2 * Math.PI / 12 - Math.PI / 2
+		for(var i = 0; i < 12; i++){
+			var markerX =	x + markerDistance * Math.cos(theta);
+			var markerY = y + markerDistance * Math.sin(theta);
+			drawMarker(markerX, markerY, i);
+			theta += directionCoefficient * 2 * Math.PI / 12;
+		}
 	}
 	
 	//update the date, change time zone etc.
@@ -140,17 +195,20 @@ var clock = function(id, options){
 		self.context.clearRect(0,0, self.canvas.width, self.canvas.height);
 
 		//outer circle
-		self.context.strokeStyle = getValue("rimColour");
-		self.context.lineWidth = getValue("rim");
-		self.context.beginPath();
-		self.context.arc(x,y,radius - getValue("rim")/2,0,2*Math.PI);
-		self.context.stroke();
-			
-		self.context.strokeStyle = getValue("lineColour");
-		self.context.fillStyle = getValue("fillColour");
-		self.context.lineWidth = getValue("lineWidth");
+		if(getValue("rim") != "none"){
+			self.context.strokeStyle = getValue("rimColour");
+			self.context.lineWidth = getValue("rim");
+			self.context.beginPath();
+			self.context.arc(x,y,radius - getValue("rim")/2,0,2*Math.PI);
+			self.context.stroke();
+				
+			self.context.strokeStyle = getValue("lineColour");
+			self.context.fillStyle = getValue("fillColour");
+			self.context.lineWidth = getValue("lineWidth");
+		}
 		
-		//numbers
+		//markers
+		drawMarkers(x, y);
 		
 		updateDate();
 		
