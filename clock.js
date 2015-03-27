@@ -15,11 +15,15 @@ Date.prototype.addSeconds = function(s){
 
 var clock = function(id, options){
 	var self = this;
+	
+	self.started = false;
 
 	//initialise canvas && context
 	self.canvas = document.getElementById(id);
 	self.context = self.canvas.getContext("2d");
 
+	var currentDate = new Date();
+	
 	//default options
 	self.options = {
 		radius: function(){ return Math.min(self.canvas.height, self.canvas.width) / 2 },
@@ -35,7 +39,6 @@ var clock = function(id, options){
 		centreCircleRadius: function(){ return getValue("radius") * 0.03; },
 		centreCircleColour: function(){return getValue("colour");},
 		centreCircleCutout: function(){ return getValue("radius") * 0.01; },
-		date: new Date(),
 		addHours: 0,
 		addMinutes: 0,
 		addSeconds: 0,
@@ -47,17 +50,17 @@ var clock = function(id, options){
 		secondHand:{
 			length: 1, width: 0.1, 
 			percentile:function(){
-				return (getValue("date", function(){return new Date()} ).getSeconds() + getValue("date").getMilliseconds() / 1000) / 60;
+				return (currentDate.getSeconds() + currentDate.getMilliseconds() / 1000) / 60;
 			}},
 		minuteHand:{
 			length: 0.9, width: 0.4, 
 			percentile:function(){
-				return (getValue("date", function(){return new Date()} ).getMinutes() + getValue("date").getSeconds() / 60) / 60;
+				return (currentDate.getMinutes() + currentDate.getSeconds() / 60) / 60;
 			}},
 		hourHand:{
 			length: 0.5, width: 0.9, 
 			percentile:function(){
-				return (getValue("date", function(){return new Date()} ).getHours() + getValue("date").getMinutes() / 60) / 12;
+				return (currentDate.getHours() + currentDate.getMinutes() / 60) / 12;
 			}}
 	}
 	
@@ -119,14 +122,14 @@ var clock = function(id, options){
 	//update the date, change time zone etc.
 	var updateDate = function(){
 		//update date;		
-		self.options.date = new Date();
-		self.options.date.addHours(getValue("addHours", function(){return 0;}));
-		self.options.date.addMinutes(getValue("addMinutes", function(){return 0;}));
-		self.options.date.addSeconds(getValue("addSeconds", function(){return 0;}));
+		currentDate = new Date();
+		currentDate.addHours(getValue("addHours", function(){return 0;}));
+		currentDate.addMinutes(getValue("addMinutes", function(){return 0;}));
+		currentDate.addSeconds(getValue("addSeconds", function(){return 0;}));
 	}
 	
 	//updates and draws clock			
-	self.update = function(){
+	self.draw = function(){
 		self.canvas.height = self.canvas.parentNode.offsetHeight;
 		self.canvas.width = self.canvas.parentNode.offsetWidth;
 		
@@ -176,14 +179,80 @@ var clock = function(id, options){
 			self.context.clip();
 			self.context.clearRect(0,0,self.canvas.width, self.canvas.height);
 		}
+	};
 	
-		window.requestAnimationFrame(self.update);
+	self.animate = function(){
+		if(self.started == false){
+			return;
+		}
+		
+		self.draw();
+		
+		window.requestAnimationFrame(self.animate);
 	};
 
 	self.start = function(){
-		self.update();
+		self.started = true;
+		
+		self.animate();
 	};
 	
+	self.stop = function(){
+		self.started = false;
+	}
+	
 	return self;
+}
+
+var clockMaker = function(){
+	var maker = this;
+	
+	maker.started = false;
+	
+	maker.clocks = [];
+	
+	maker.addClock = function(clockItem, options){
+		if(typeof clockItem == "string"){
+			clockItem = new clock("clockItem", options);
+		}
+		
+		maker.clocks.push({clock: clockItem, started: true});
+	}
+	
+	maker.draw = function(){
+		for(var i in maker.clocks){
+			var currentClock = maker.clocks[i];
+			if(currentClock.started == true){
+				currentClock.clock.draw();
+			}
+		}
+	}
+	
+	maker.animate = function(){
+		if(maker.started == false){
+			return;
+		}
+		
+		maker.draw();
+		
+		window.requestAnimationFrame(maker.animate);
+	}
+	
+	maker.start = function(){
+		maker.started = true;
+		
+		for(var i in maker.clocks){
+			var currentClock = maker.clocks[i];
+			currentClock.started = true;
+		}
+		
+		maker.animate();
+	}
+	
+	maker.stop = function(){
+		maker.started = false;
+	}
+	
+	return maker;
 }
 		

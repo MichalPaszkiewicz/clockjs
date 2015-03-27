@@ -77,3 +77,19 @@ myClock.start();
 ```
 
 By default the clock will fit to the parent container, so to set the size, just set the size of the element that contains the canvas.
+
+Handle multiple clocks
+-------------------------
+
+For creating multiple clocks, clock.js has a clockMaker object, which can be used to handle multiple clocks. It can be used like this:
+
+```var myClockMaker = new clockMaker();
+
+myClockMaker.addClock(myClock1);
+myClockMaker.addClock(myClock2);
+
+myClockMaker.start();```
+
+Single clocks can be started or stopped by changing their started value inside the clockMaker, like this:
+
+```myClockMaker.clocks[1].started = false;```
