@@ -92,19 +92,24 @@ Handle multiple clocks
 
 For creating multiple clocks, clock.js has a clockMaker object, which can be used to handle multiple clocks. It can be used like this:
 
-```var myClockMaker = new clockMaker();
+```
+var myClockMaker = new clockMaker();
 
 myClockMaker.addClock(myClock1);
 myClockMaker.addClock(myClock2);
 
-myClockMaker.start();```
+myClockMaker.start();
+```
 
 Clocks can also be added to a clockmaker from their ID.
 
 ```
 <canvas id="the-best-clock-in-the-world"></canvas>
-myClockMaker.addClock("the-best-clock-in-the-world");```
+myClockMaker.addClock("the-best-clock-in-the-world");
+```
 
 Single clocks can be started or stopped by changing their started value inside the clockMaker, like this:
 
-```myClockMaker.clocks[1].started = false;```
+```
+myClockMaker.clocks[1].started = false;
+```
