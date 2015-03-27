@@ -78,6 +78,15 @@ myClock.start();
 
 By default the clock will fit to the parent container, so to set the size, just set the size of the element that contains the canvas.
 
+Edit hands
+------------
+
+The hands of the clock can be edited by accessing them through clock.hands after creating the clock
+
+```
+myClock.hands.secondHand.length = 0.7
+```
+
 Handle multiple clocks
 -------------------------
 
@@ -89,6 +98,12 @@ myClockMaker.addClock(myClock1);
 myClockMaker.addClock(myClock2);
 
 myClockMaker.start();```
+
+Clocks can also be added to a clockmaker from their ID.
+
+```
+<canvas id="the-best-clock-in-the-world"></canvas>
+myClockMaker.addClock("the-best-clock-in-the-world");```
 
 Single clocks can be started or stopped by changing their started value inside the clockMaker, like this:
 

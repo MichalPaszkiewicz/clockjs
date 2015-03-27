@@ -145,6 +145,14 @@ myClock.start();
 						var blackClock = new clock("backwards-clock", {colour: "black", rimColour:"black", rim: 1,directionCoefficient: -1});
 					</script>
 					
+					<h2>Changing the clock hands</h2>
+					<p>
+						The hands of the clock can be edited by accessing them through clock.hands after creating the clock.
+					</p>
+					
+<pre><code class="javascript">
+myClock.hands.secondHand.length = 0.7
+</code></pre>					
 					<h2>Handle multiple clocks</h2>
 					<p>
 						For creating multiple clocks, clock.js has a <i>clockMaker</i> object, which can be used to handle multiple clocks. It can be used like this:
