@@ -271,7 +271,7 @@ var clockMaker = function(){
 	
 	maker.addClock = function(clockItem, options){
 		if(typeof clockItem == "string"){
-			clockItem = new clock("clockItem", options);
+			clockItem = new clock(clockItem, options);
 		}
 		
 		maker.clocks.push({clock: clockItem, started: true});
