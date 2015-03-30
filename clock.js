@@ -60,7 +60,7 @@ var clock = function(id, options){
 				return (currentDate.getSeconds() + currentDate.getMilliseconds() / 1000) / 60;
 			}},
 		minuteHand:{
-			length: 0.9, width: 0.4, 
+			length: 0.8, width: 0.4, 
 			percentile:function(){
 				return (currentDate.getMinutes() + currentDate.getSeconds() / 60) / 60;
 			}},
