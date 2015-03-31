@@ -96,3 +96,16 @@ pre{
 	display:inline-block;
 	
 }
+
+#performance-test a{
+	background: none;
+	color: black;
+	font-weight: bolder;
+	text-decoration: underline;
+}
+
+@media(max-width: 900px){
+	#performance-test{
+		display: none;
+	}
+}
