@@ -1,0 +1,111 @@
+html, body{
+	padding: 0;
+	margin: 0;
+	height: 100%;
+	width: 100%;
+	font-family: "arial";
+	letter-spacing: 1px;
+	word-spacing: 3px;
+}
+
+.main-container{
+	min-height: 100%;
+}
+
+.header, .footer, .push{
+	height: 70px;
+	text-align: center;
+	position:relative;
+	z-index:5;
+}
+
+h2{
+	text-align: center;
+}
+
+p{
+	text-align: justify;
+}
+
+.header, .footer, .footer a{
+	background: black;
+  	color: white;
+  	transition: text-shadow 0.5s ease;
+  	-moz-transition: text-shadow 0.5s ease;
+  	-webkit-transition: text-shadow 0.5s ease;
+}
+
+.footer{
+	margin-top: -70px;
+}
+
+.panel-box{
+	max-width: 1000px;
+	margin: auto;
+	position: relative;
+  	z-index: 10;
+}
+
+.panel,.header,.footer{
+
+}
+
+.panel{
+	padding: 10px;
+}
+
+h1{
+	font-size: 4em;
+	font-weight: 100;
+}
+
+a{
+	text-decoration: none;
+	background: black;
+	color: white;
+	padding: 20px;
+  	display: inline-block;
+}
+
+.footer a:hover{
+	text-shadow: 2px 2px 10px rgb(0, 208, 224), -2px -2px 10px rgb(255, 199, 199), 0 0 15px white;
+}
+
+code{
+	text-align: left;
+	background: none !important;
+}
+
+pre{
+	background: rgba(46, 55, 148, 0.1);
+	padding: 10px;
+	overflow-x: auto;
+}
+
+@media (max-width: 550px) {
+	#fork-me{
+		display:none;
+	}
+}
+
+.small-clock{
+	height: 100%;
+	width: 100%;
+	max-height: 200px;
+	max-width: 200px;
+	display:inline-block;
+	
+}
+
+#performance-test a{
+	background: none;
+	color: black;
+	font-weight: bolder;
+	text-decoration: underline;
+}
+
+@media(max-width: 900px){
+	#performance-test{
+		display: none;
+	}
+}
