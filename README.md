@@ -7,7 +7,7 @@ How to use
 ===========
 To use this plugin, simply add the following code to your page:
 
-```
+```html
 <canvas id="my-canvas"></canvas>
 <script src="http://www.michalpaszkiewicz.co.uk/clockjs/clock.js"></script>
 <script>
@@ -18,7 +18,7 @@ To use this plugin, simply add the following code to your page:
 
 The clock can be customised with any or all of the following options, which can be values or functions:
 
-```
+```js
 var options = {
 	//The radius of the clock
 	radius: function(){ return Math.min(self.canvas.height, self.canvas.width) / 2 },
@@ -102,7 +102,7 @@ Edit hands
 
 The hands of the clock can be edited by accessing them through clock.hands after creating the clock
 
-```
+```js
 myClock.hands.secondHand.length = 0.7
 ```
 
@@ -111,7 +111,7 @@ Handle multiple clocks
 
 For creating multiple clocks, clock.js has a clockMaker object, which can be used to handle multiple clocks. It can be used like this:
 
-```
+```js
 var myClockMaker = new clockMaker();
 
 myClockMaker.addClock(myClock1);
@@ -122,13 +122,13 @@ myClockMaker.start();
 
 Clocks can also be added to a clockmaker from their ID.
 
-```
+```html
 <canvas id="the-best-clock-in-the-world"></canvas>
 myClockMaker.addClock("the-best-clock-in-the-world");
 ```
 
 Single clocks can be started or stopped by changing their started value inside the clockMaker, like this:
 
-```
+```js
 myClockMaker.clocks[1].started = false;
 ```
